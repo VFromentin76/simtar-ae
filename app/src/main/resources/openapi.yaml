@@ -1,0 +1,689 @@
+openapi: 3.0.3
+info:
+  title: Tarificateur API
+  version: 1.0.0
+  description: API de tarification d'assurance pour un portefeuille de prêts.
+  contact:
+    name: Support technique
+    email: support@example.com
+servers:
+  - url: ./
+    description: URL relative au context-path courant
+paths:
+  /api/v1/quotation:
+    post:
+      tags:
+        - Quotation
+      summary: Calcule un devis d'assurance pour un ensemble de clients et de prêts
+      operationId: createQuotation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuotationRequest'
+            examples:
+              RequeteModele:
+                summary: "Exemple valide complet (requete.json)"
+                value:
+                  creationDate: "2025-02-15"
+                  source: "HM"
+                  returnResults: "true"
+                  paymentFrequency: 12
+                  customers:
+                    "1":
+                      partnerCustomerRef: "ASSUREE001"
+                      address: "test"
+                      beneficiaries:
+                        birthCity: "Rouen"
+                        birthDate: "15/07/1996"
+                        firstname: "prénom"
+                        lastname: "nom de famille"
+                        order: 1
+                      beneficiaryClause: 1
+                      beneficiaryType: null
+                      city: "ROUEN"
+                      zipCode: "76000"
+                      country: "france"
+                      civility: 1
+                      firstname: "test un"
+                      lastname: "test"
+                      maidenName: ""
+                      birthDate: "1990-01-01"
+                      birthZipcode: ""
+                      birthCity: ""
+                      birthCountry: "FRANCE"
+                      familySituation: 2
+                      cellPhone: "0606060606"
+                      homePhone: ""
+                      officePhone: ""
+                      email: "test.testun@yopmail.com"
+                      profession: 12
+                      exactProfession: "développeur"
+                      franchise: 90
+                      handling: false
+                      height: false
+                      businessTrip: false
+                      isMainCustomer: 1
+                      partTime: false
+                      riskyProfession: false
+                      riskySport: false
+                      riskyProfessionId: 0
+                      smoker: false
+                      disclosedOverLemoineLimit: false
+                      travelingAbroad: false
+                      modulation: 4010
+                      nextAddress:
+                        address: "1 rue ma nouvelle adresse"
+                        city: "MaVille"
+                        moveDate: "2025-06-30"
+                        zipCode: "76000"
+                      fees: "100"
+                      brokerFees: 50
+                      isBrokerFeesSpread: true
+                  options:
+                    bank: "abbey national"
+                    couple: true
+                    effectiveDate: "2025-06-01"
+                    projectQualification: 1
+                    projectState: 7
+                    loans:
+                      "1":
+                        amount: "220000.00"
+                        duration: "180"
+                        delayType: "1"
+                        delay: "24"
+                        partnerLoanRef: 1
+                        rate: "0.900"
+                        rateType: 1
+                        type: 1
+                        waranties:
+                          "1":
+                            ip: false
+                            ipp: false
+                            ipt: true
+                            itp: true
+                            itt: true
+                            dos: false
+                            psy: false
+                            pe: false
+                            quotityVie: "100"
+                            quotityNonVie: "100"
+      responses:
+        '200':
+          description: Devis CI et CRD calculés indépendamment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuotationResponse'
+        '400':
+          description: Requête invalide
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Configuration produit introuvable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Echec de récupération de la configuration produit externe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Erreur interne du serveur
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    QuotationRequest:
+      type: object
+      description: Payload d'entrée pour la tarification.
+      required:
+        - creationDate
+        - customers
+        - options
+        - returnResults
+        - source
+      properties:
+        creationDate:
+          type: string
+          format: date
+          example: '2025-02-15'
+        customers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Customer'
+          description: Assurés indexés par clé textuelle (ex. "1", "2").
+        options:
+          $ref: '#/components/schemas/QuotationOptions'
+        returnResults:
+          type: string
+          example: 'true'
+        source:
+          type: string
+          example: HM
+        paymentFrequency:
+          type: integer
+          example: 12
+
+    Customer:
+      type: object
+      description: Dossier d'un assuré.
+      properties:
+        partnerCustomerRef:
+          type: string
+          example: ASSUREE001
+        address:
+          type: string
+          example: test
+        beneficiaries:
+          $ref: '#/components/schemas/Beneficiary'
+        beneficiaryClause:
+          type: integer
+          nullable: true
+          example: 1
+        beneficiaryType:
+          type: integer
+          nullable: true
+          example: null
+        city:
+          type: string
+          example: ROUEN
+        zipCode:
+          type: string
+          example: '76000'
+        country:
+          type: string
+          example: france
+        civility:
+          type: integer
+          example: 1
+        firstname:
+          type: string
+          example: test un
+        lastname:
+          type: string
+          example: test
+        maidenName:
+          type: string
+          example: ''
+        birthDate:
+          type: string
+          format: date
+          example: '1990-01-01'
+        birthZipcode:
+          type: string
+          example: ''
+        birthCity:
+          type: string
+          example: ''
+        birthCountry:
+          type: string
+          example: FRANCE
+        familySituation:
+          type: integer
+          example: 2
+        cellPhone:
+          type: string
+          example: '0606060606'
+        homePhone:
+          type: string
+          example: ''
+        officePhone:
+          type: string
+          example: ''
+        email:
+          type: string
+          format: email
+          example: test.testun@yopmail.com
+        profession:
+          type: integer
+          description: |
+            Catégorie professionnelle (indexée à partir de 1) :
+            1 SANS_ACTIVITE, 2 OUVRIERS, 3 ARTISANS, 4 CHAUFFEURS,
+            5 COMMERCANTS_CHEFS_ENTREPRISE, 6 EMPLOYES, 7 INGENIEURS_CADRES,
+            8 POLICIERS_MILITAIRES_SURVEILLANCE, 9 PROFESSIONS_AGRICOLES,
+            10 PROFESSIONS_SANTE_SOCIAL, 11 PROFESSIONS_ENSEIGNEMENT_SCIENTIFIQUES,
+            12 PROFESSIONS_INFO_ARTS_SPECTACLES, 13 PROFESSIONS_LIBERALES,
+            14 TECHNICIENS_AGENTS_MAITRISE.
+          example: 12
+        exactProfession:
+          type: string
+          example: développeur
+        franchise:
+          type: integer
+          example: 90
+        handling:
+          type: boolean
+          example: false
+        height:
+          type: boolean
+          example: false
+        businessTrip:
+          type: boolean
+          example: false
+        isMainCustomer:
+          type: integer
+          example: 1
+        partTime:
+          type: boolean
+          example: false
+        riskyProfession:
+          type: boolean
+          example: false
+        riskySport:
+          type: boolean
+          example: false
+        riskyProfessionId:
+          type: integer
+          example: 0
+        smoker:
+          type: boolean
+          example: false
+        disclosedOverLemoineLimit:
+          type: boolean
+          example: false
+        travelingAbroad:
+          type: boolean
+          example: false
+        modulation:
+          type: integer
+          example: 4010
+        nextAddress:
+          $ref: '#/components/schemas/Address'
+        fees:
+          type: string
+          example: '100'
+        brokerFees:
+          type: integer
+          example: 50
+        isBrokerFeesSpread:
+          type: boolean
+          example: true
+
+    Beneficiary:
+      type: object
+      properties:
+        birthCity:
+          type: string
+          example: Rouen
+        birthDate:
+          type: string
+          example: 15/07/1996
+        firstname:
+          type: string
+          example: prénom
+        lastname:
+          type: string
+          example: nom de famille
+        order:
+          type: integer
+          example: 1
+
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+          example: 1 rue ma nouvelle adresse
+        city:
+          type: string
+          example: MaVille
+        moveDate:
+          type: string
+          format: date
+          example: '2025-06-30'
+        zipCode:
+          type: string
+          example: '76000'
+
+    QuotationOptions:
+      type: object
+      properties:
+        bank:
+          type: string
+          example: abbey national
+        couple:
+          type: boolean
+          example: true
+        effectiveDate:
+          type: string
+          format: date
+          example: '2025-06-01'
+        loans:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Loan'
+        projectQualification:
+          type: integer
+          example: 1
+        projectState:
+          type: integer
+          example: 7
+
+    Loan:
+      type: object
+      properties:
+        amount:
+          type: string
+          example: '220000.00'
+        duration:
+          type: string
+          description: Durée du prêt en mois.
+          example: '180'
+        delayType:
+          type: string
+          example: '1'
+        delay:
+          type: string
+          example: '24'
+        partnerLoanRef:
+          type: integer
+          example: 1
+        rate:
+          type: string
+          example: '0.900'
+        rateType:
+          type: integer
+          example: 1
+        type:
+          type: integer
+          example: 1
+        waranties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Warranty'
+
+    Warranty:
+      type: object
+      properties:
+        ip:
+          type: boolean
+          example: false
+        ipp:
+          type: boolean
+          example: false
+        ipt:
+          type: boolean
+          example: true
+        itp:
+          type: boolean
+          example: true
+        itt:
+          type: boolean
+          example: true
+        iptSortieCapital:
+          type: boolean
+          description: Souscription de l'option de sortie en capital IPT
+          example: false
+        dos:
+          type: boolean
+          example: false
+        psy:
+          type: boolean
+          example: false
+        pe:
+          type: boolean
+          example: false
+        mno:
+          type: boolean
+          description: Souscription à la garantie MNO
+          example: true
+        mnoOption:
+          type: string
+          description: Code de l'option MNO retenue
+          enum:
+            - DOS_SANS_OPT
+            - DOS_RACHAT_1
+            - DOS_RACHAT_2
+            - PSY_SANS_OPT
+            - PSY_RACHAT_1
+            - PSY_RACHAT_2
+            - DOS_PSY_SANS_OPT
+            - DOS_PSY_RACHAT_1
+            - DOS_PSY_RACHAT_2
+          example: DOS_RACHAT_1
+        ippOption:
+          type: string
+          description: Code de l'option IPP retenue quand la garantie IPP est souscrite
+          enum:
+            - IPP_VAR_50
+            - IPP_VAR_MAX
+          example: IPP_VAR_50
+        drom:
+          type: boolean
+          description: Souscription réalisée dans les DROM
+          example: false
+        ageFinCouverture:
+          type: string
+          description: >-
+            Âge de fin de couverture retenu pour les garanties incapacité/invalidité
+            (IP/IPP/IPT/ITP/ITT/DOS/PSY/PE). Détermine le coefficient appliqué en
+            fonction de l'âge à l'adhésion et la date d'arrêt de la garantie.
+          enum:
+            - AGE_65
+            - AGE_67
+            - AGE_70
+          example: AGE_65
+        corse:
+          type: boolean
+          description: Souscription réalisée en Corse
+          example: false
+        exonerationCotisations:
+          type: boolean
+          description: >-
+            Souscription à l'option d'exonération des cotisations pour
+            l'ensemble des garanties. Le coefficient d'exonération n'est
+            appliqué que si cette option est explicitement souscrite.
+          example: false
+        quotityVie:
+          type: string
+          description: Quotité applicable à la partie vie (DC/PTIA)
+          example: '100'
+        quotityNonVie:
+          type: string
+          description: Quotité applicable à la partie non vie (IP, IPP, IPT, ITP, ITT, DOS, PSY, PE)
+          example: '100'
+
+    QuotationResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+        creationDate:
+          type: string
+          format: date
+          example: '2025-02-15'
+        quotationId:
+          type: string
+          example: Q-2025-02-15-001
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerQuote'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductQuote'
+        totals:
+          $ref: '#/components/schemas/QuoteTotals'
+        warnings:
+          type: array
+          items:
+            type: string
+        schedule:
+          type: array
+          description: Echéancier annuel des primes par garantie.
+          items:
+            $ref: '#/components/schemas/ScheduleLine'
+        returnResults:
+          type: boolean
+          example: true
+
+    ScheduleLine:
+      type: object
+      properties:
+        year:
+          type: integer
+          example: 2025
+        dcPtia:
+          type: number
+          format: double
+          description: Prime annuelle DC/PTIA.
+          example: 91.90
+        itt:
+          type: number
+          format: double
+          description: Prime annuelle ITT.
+          example: 38.90
+        ipt:
+          type: number
+          format: double
+          description: Prime annuelle IPT.
+          example: 5.99
+        ipp:
+          type: number
+          format: double
+          description: Prime annuelle IPP.
+          example: 12.57
+        ip:
+          type: number
+          format: double
+          description: Prime annuelle IP.
+          example: 8.50
+        itp:
+          type: number
+          format: double
+          description: Prime annuelle ITP.
+          example: 6.20
+        dos:
+          type: number
+          format: double
+          description: Prime annuelle DOS.
+          example: 3.10
+        psy:
+          type: number
+          format: double
+          description: Prime annuelle PSY.
+          example: 2.40
+        pe:
+          type: number
+          format: double
+          description: Prime annuelle PE.
+          example: 1.80
+        total:
+          type: number
+          format: double
+          description: Total annuel toutes garanties.
+          example: 149.36
+        comment:
+          type: string
+          nullable: true
+          example: effet prorata date d'effet milieu d'année
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: "Configuration produit introuvable pour l'identifiant : PROD-404"
+
+    CustomerQuote:
+      type: object
+      properties:
+        customerRef:
+          type: string
+          example: ASSUREE001
+        status:
+          type: string
+          example: validated
+        premium:
+          $ref: '#/components/schemas/Premium'
+        loans:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerLoanQuote'
+        warnings:
+          type: array
+          items:
+            type: string
+
+    CustomerLoanQuote:
+      type: object
+      properties:
+        loanId:
+          type: string
+          example: '1'
+        amount:
+          type: string
+          example: '220000.00'
+        rate:
+          type: string
+          example: '0.900'
+        premium:
+          type: number
+          format: double
+          example: 125.5
+        covers:
+          $ref: '#/components/schemas/Warranty'
+
+    ProductQuote:
+      type: object
+      properties:
+        code:
+          type: string
+          example: xxxxx
+        name:
+          type: string
+          example: Produit X
+        premium:
+          $ref: '#/components/schemas/Premium'
+        status:
+          type: string
+          example: available
+
+    Premium:
+      type: object
+      properties:
+        monthly:
+          type: number
+          format: double
+          example: 293.2
+        annual:
+          type: number
+          format: double
+          example: 3518.4
+        currency:
+          type: string
+          example: EUR
+
+    QuoteTotals:
+      type: object
+      properties:
+        monthly:
+          type: number
+          format: double
+          example: 293.2
+        annual:
+          type: number
+          format: double
+          example: 3518.4
+        currency:
+          type: string
+          example: EUR

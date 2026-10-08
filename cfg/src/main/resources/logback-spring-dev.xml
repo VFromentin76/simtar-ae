@@ -1,0 +1,73 @@
+<configuration debug="false">
+    <!-- To get colored logs in standard output -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <!-- Inject Spring properties -->
+    <springProperty scope="context" name="server.hostname" source="info.app.custom.hostname"/>
+    <springProperty scope="context" name="server.port" source="info.app.custom.serverPort"/>
+    <springProperty scope="context" name="server.environment" source="info.app.custom.environment"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/${server.hostname}_${server.environment}_${project.parent.artifactId}_${server.port}_springboot.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs/${server.hostname}_${server.environment}_${project.parent.artifactId}_${server.port}_%d{yyyy-MM-dd}_springboot.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %-5level [%thread] %class \(%file:%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%clr(%d %-5level [%thread] %class \(%file:%line\) - %msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="fr.hm.tarificateur" level="TRACE" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="fr.hm.fwk" level="TRACE" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.hibernate" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.xnio" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.eclipse.jetty" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="com.jayway.jsonpath" level="INFO" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.jboss.logging" level="WARN" additivity="false">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="ch.qos.logback" level="WARN">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="WARN">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <jmxConfigurator />
+</configuration>

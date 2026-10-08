@@ -1,0 +1,99 @@
+{
+  "status": "OK",
+  "broker": "XXXXXXXX",
+  "creationDate": "2025-02-15",
+  "quotationId": "Q-2025-02-15-001",
+  "customers": [
+    {
+      "customerRef": "ASSUREE001",
+      "status": "validated",
+      "premium": {
+        "monthly": 158.45,
+        "annual": 1901.4,
+        "currency": "EUR"
+      },
+      "loans": [
+        {
+          "loanId": "1",
+          "amount": "220000.00",
+          "rate": "0.900",
+          "premium": 125.5,
+          "covers": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false
+          }
+        },
+        {
+          "loanId": "2",
+          "amount": "40000.00",
+          "rate": "0.500",
+          "premium": 32.95,
+          "covers": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false
+          }
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "customerRef": "ASSUREE002",
+      "status": "validated",
+      "premium": {
+        "monthly": 134.75,
+        "annual": 1617.0,
+        "currency": "EUR"
+      },
+      "loans": [
+        {
+          "loanId": "1",
+          "amount": "220000.00",
+          "rate": "0.900",
+          "premium": 119.2,
+          "covers": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false
+          }
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "products": [
+    {
+      "code": "xxxxx",
+      "name": "Produit X",
+      "premium": {
+        "monthly": 293.2,
+        "annual": 3518.4,
+        "currency": "EUR"
+      },
+      "status": "available"
+    }
+  ],
+  "totals": {
+    "monthly": 293.2,
+    "annual": 3518.4,
+    "currency": "EUR"
+  },
+  "warnings": [],
+  "returnResults": true
+}

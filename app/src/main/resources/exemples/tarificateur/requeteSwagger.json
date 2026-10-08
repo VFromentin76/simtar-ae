@@ -1,0 +1,234 @@
+{
+  "creationDate": "2025-02-15",
+  "customers": {
+    "1": {
+      "partnerCustomerRef": "ASSUREE001",
+      "address": "test",
+      "beneficiaries": {
+        "birthCity": "Rouen",
+        "birthDate": "15/07/1996",
+        "firstname": "prénom",
+        "lastname": "nom de famille",
+        "order": 1
+      },
+      "beneficiaryClause": 1,
+      "beneficiaryType": null,
+      "city": "ROUEN",
+      "zipCode": "76000",
+      "country": "france",
+      "civility": 1,
+      "firstname": "test un",
+      "lastname": "test",
+      "maidenName": "",
+      "birthDate": "1990-01-01",
+      "birthZipcode": "",
+      "birthCity": "",
+      "birthCountry": "FRANCE",
+      "familySituation": 2,
+      "cellPhone": "0606060606",
+      "homePhone": "",
+      "officePhone": "",
+      "email": "test.testun@yopmail.com",
+      "profession": 2,
+      "exactProfession": "développeur",
+      "franchise": 90,
+      "handling": false,
+      "height": false,
+      "businessTrip": false,
+      "isMainCustomer": 1,
+      "partTime": false,
+      "riskyProfession": false,
+      "riskySport": false,
+      "riskyProfessionId": 0,
+      "smoker": false,
+      "disclosedOverLemoineLimit": false,
+      "travelingAbroad": false,
+      "modulation": 4010,
+      "nextAddress": {
+        "address": "1 rue ma nouvelle adresse",
+        "city": "MaVille",
+        "moveDate": "2025-06-30",
+        "zipCode": "76000"
+      },
+      "fees": "100",
+      "brokerFees": 50,
+      "isBrokerFeesSpread": true
+    },
+    "2": {
+      "partnerCustomerRef": "ASSUREE002",
+      "address": "test",
+      "beneficiaries": {
+        "birthCity": "Rouen",
+        "birthDate": "15/07/1996",
+        "firstname": "prénom",
+        "lastname": "nom de famille",
+        "order": 1
+      },
+      "beneficiaryClause": 1,
+      "beneficiaryType": null,
+      "city": "ROUEN",
+      "zipCode": "76000",
+      "country": "france",
+      "civility": 1,
+      "firstname": "test deux",
+      "lastname": "test",
+      "maidenName": "",
+      "birthDate": "1990-01-01",
+      "birthZipcode": "",
+      "birthCity": "",
+      "birthCountry": "FRANCE",
+      "familySituation": 2,
+      "cellPhone": "0606060607",
+      "homePhone": "",
+      "officePhone": "",
+      "email": "test.testdeux@yopmail.com",
+      "profession": 2,
+      "exactProfession": "développeur",
+      "franchise": 90,
+      "handling": false,
+      "height": false,
+      "businessTrip": false,
+      "isMainCustomer": 1,
+      "partTime": false,
+      "riskyProfession": false,
+      "riskySport": false,
+      "smoker": false,
+      "disclosedOverLemoineLimit": false,
+      "travelingAbroad": false,
+      "modulation": 4010,
+      "nextAddress": {
+        "address": "1 rue ma nouvelle adresse",
+        "city": "MaVille",
+        "moveDate": "2025-06-30",
+        "zipCode": "76000"
+      },
+      "fees": "100",
+      "brokerFees": 50,
+      "isBrokerFeesSpread": true
+    }
+  },
+  "options": {
+    "bank": "abbey national",
+    "couple": true,
+    "effectiveDate": "2025-06-01",
+    "loans": {
+      "1": {
+        "amount": "220000.00",
+        "duration": "180",
+        "delayType": "1",
+        "delay": "24",
+        "partnerLoanRef": 1,
+        "rate": "0.900",
+        "rateType": 1,
+        "type": 1,
+        "waranties": {
+          "1": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      },
+      "2": {
+        "amount": "40000.00",
+        "duration": "200",
+        "delayType": "1",
+        "delay": "24",
+        "partnerLoanRef": 1,
+        "rate": "0.500",
+        "rateType": 1,
+        "type": 1,
+        "waranties": {
+          "1": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      },
+      "3": {
+        "amount": "20000.00",
+        "duration": "200",
+        "delayType": "1",
+        "delay": "24",
+        "partnerLoanRef": 1,
+        "rate": "0.500",
+        "rateType": 1,
+        "type": 1,
+        "waranties": {
+          "1": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      }
+    },
+    "projectQualification": 1,
+    "projectState": 7
+  },
+  "returnResults": "true",
+  "source": "HM",
+  "paymentFrequency": 12,
+  "products": [
+    "xxxxx",
+    "yyyyy"
+  ]
+}

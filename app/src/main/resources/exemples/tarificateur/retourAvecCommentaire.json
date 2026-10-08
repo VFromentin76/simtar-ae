@@ -1,0 +1,99 @@
+{
+  "status": "OK", // Statut global de la tarification
+  "broker": "XXXXXXXX", // Code courtier
+  "creationDate": "2025-02-15", // Date de création du devis
+  "quotationId": "Q-2025-02-15-001", // Identifiant unique du devis
+  "customers": [
+    {
+      "customerRef": "ASSUREE001", // Référence client externe
+      "status": "validated", // Statut du client dans la tarification
+      "premium": {
+        "monthly": 158.45, // Prime mensuelle
+        "annual": 1901.4, // Prime annuelle
+        "currency": "EUR" // Devise
+      },
+      "loans": [
+        {
+          "loanId": "1", // Identifiant du prêt
+          "amount": "220000.00", // Montant du prêt
+          "rate": "0.900", // Taux
+          "premium": 125.5, // Prime calculée pour ce prêt
+          "covers": {
+            "ip": false, // Garantie IP
+            "ipp": false, // Garantie IPP
+            "ipt": true, // Garantie IPT
+            "itp": true, // Garantie ITP
+            "itt": true, // Garantie ITT
+            "dos": false, // Extension DOS
+            "psy": false, // Extension PSY
+            "pe": false // Garantie Perte d'emploi
+          }
+        },
+        {
+          "loanId": "2",
+          "amount": "40000.00",
+          "rate": "0.500",
+          "premium": 32.95,
+          "covers": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false
+          }
+        }
+      ],
+      "warnings": [] // Alertes éventuelles pour ce client
+    },
+    {
+      "customerRef": "ASSUREE002",
+      "status": "validated",
+      "premium": {
+        "monthly": 134.75,
+        "annual": 1617.0,
+        "currency": "EUR"
+      },
+      "loans": [
+        {
+          "loanId": "1",
+          "amount": "220000.00",
+          "rate": "0.900",
+          "premium": 119.2,
+          "covers": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false
+          }
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "products": [
+    {
+      "code": "xxxxx", // Code du produit
+      "name": "Produit X", // Libellé du produit
+      "premium": {
+        "monthly": 293.2,
+        "annual": 3518.4,
+        "currency": "EUR"
+      },
+      "status": "available" // Disponibilité du produit
+    }
+  ],
+  "totals": {
+    "monthly": 293.2, // Prime totale mensuelle
+    "annual": 3518.4, // Prime totale annuelle
+    "currency": "EUR"
+  },
+  "warnings": [], // Alertes globales
+  "returnResults": true // Demande de retour de résultat en mode synchrone
+}

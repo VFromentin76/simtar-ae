@@ -1,0 +1,259 @@
+{
+  "creationDate": "2025-02-15",
+  "customers": {
+    // Un bloc customer par assuré avec un index entre guillemets.
+    "1": {
+      "partnerCustomerRef": "ASSUREE001",           // Référence externe (de votre outil par exemple ?)
+      "address": "test",                           // * Numéro et rue de résidence (Ex: 1 avenue de Paris)
+      "beneficiaries": {                           // à saisir si on a un bénéficiaire physique (utilisé uniquement en cas de tarification d'un produit générali)
+        "birthCity": "Rouen",                    // ** ville de naissance du bénéficiaire
+        "birthDate": "15/07/1996",               // ** Date de naissance du bénéficiaire
+        "firstname": "prénom",                   // ** prénom du bénéficiaire
+        "lastname": "nom de famille",            // ** Nom du bénéficiaire
+        "order": 1                               // ** Ordre du bénéficiaire (1 par défaut)
+      },
+      "beneficiaryClause": 1,                      // 1 : Le conjoint de l'assuré(e), à défaut les enfants de l'assuré(e) nés ou à naître, ... 2 : Autre, null par défaut
+      "beneficiaryType": null,                     // 1 : Organisme financier, 2 : Personne physique; null par défaut.
+      "city": "ROUEN",                             // * Nom de la ville de résidence (Ex: Vincennes)
+      "zipCode": "76000",                          // * Code postal de résidence (Ex: 94080)
+      "country": "france",                         // * Code du territoire de résidence (Ex: france).
+      "civility": 1,                               // * 1 => Monsieur, 2 => Madame
+      "firstname": "test un",                      // * Prénom de l’assuré(e)
+      "lastname": "test",                          // * Nom de naissance de l’assuré(e)
+      "maidenName": "",                            // Nom marital de l’asuré(e)
+      "birthDate": "1990-01-01",                   // * Date de naissance de l’assuré(e)
+      "birthZipcode": "",                          // Code postal de naissance de l’assuré(e)
+      "birthCity": "",                             // Ville de naissance de l’assuré(e)
+      "birthCountry": "FRANCE",                    // Code du territoire de résidence (Ex: france).
+      "familySituation": 2,                        // * Situation Familiale (1 => Marié, 2 => Célibataire, 3 => Divorcé(e), 4 => Parent Isolé(e), 5 => Séparé(e), 6 => Union Libre, 7 => Pacsé, 8 => Veuf(ve), 9 => Non déclaré)
+      "cellPhone": "0606060606",                  // * Numéro de téléphone mobile de l’assuré (utilisé pour la signature électronique)
+      "homePhone": "",                             // Numéro de téléphone fixe (facultatif)
+      "officePhone": "",                           // Numéro de téléphone professionnel (facultatif)
+      "email": "test.testun@yopmail.com",          // * Adresse e-mail de l’assuré (utilisé pour la création de l’espace client par la suite).
+      "profession": 2,                             // * Code profession
+      "exactProfession": "développeur",            // Libellé exact de la profession
+      "franchise": 90,                             // * Franchise applicable au produit (en jours, ex: 15, 30, 60, 90, 120 ou 180 jours).
+      "handling": false,                           // * L’assuré(e) exerce une profession impliquant de la manipulation de charge lourde.
+      "height": false,                             // * L’assuré(e) exerce une profession en hauteur (> 15m).
+      "businessTrip": false,                        // * L’assuré(e) réalise des déplacements professionnels (> 15 000 kms/ans)
+      "isMainCustomer": 1,                         // * Qualité de l’assuré (1 => Emprunteur, 2 => CoEmprunteur, 3 => Caution).
+      "partTime": false,                            // * Profession en temps partiel
+      "riskyProfession": false,                    // * Profession à risque
+      "riskySport": false,                         // * L'information sport à risque n'est pas prise en compte dans la tarification et doit faire l'objet d'une étude complémentaire
+      "riskyProfessionId": 0,                      // * Id profession à risque A FOURNIR uniquement sur les code produits cardif et cardici ou mettre 0
+      // Liste des ID riskyProfessionId uniquement sur les code produits cardif et cardici
+      // 0: N’exerce aucune de ces professions
+      // 631: Armée
+      // 632: Aviation
+      // 605: Cascadeur
+      // 636: Chauffeurs routiers
+      // 556: Guide de haute montagne
+      // 638: "Journaliste, photographe et cameraman de presse"
+      // 639: Marine marchande
+      // 637: Mineurs
+      // 634: Métiers de la démolition
+      // 640: Métiers de la pêche
+      // 628: Métiers du pétrole-gaz
+      // 629: Nucléaire
+      // 642: Plongée
+      // 641: "Pompier, secouriste et sécurité civile"
+      // 630: Port ou manipulation d’armes
+      // 604: Profession manipulant Explosifs / Substances chimiques/toxiques
+      // 635: "Risques artistiques, politiques, liés à des missions humanitaires, liés aux animaux sauvages"
+      // 594: Sportif professionnel
+      // 633: "Travail en hauteur supérieure à 20 mètres, souterrain, sur site dangereux"
+
+      "smoker": false,                             // * Fumeur (non fumeur si vous n'avez pas fumé depuis au moins 24 mois (y compris cigarette électronique))
+      "disclosedOverLemoineLimit": false,          // ** (uniquement si éligibilité Lemoine) Déclaration d’encours: Permet de signaler que l’assuré dépasse les 200 000€ d’encours (pour sortir du segment Lemoine). True => Encours > à 200K€)
+      "travelingAbroad": false,                    // * Voyage à l’étranger
+      "modulation": 4010,                           // * Taux de chargement
+      "nextAddress": {                              // adresse postale si l'assuré déménage
+        "address": "1 rue ma nouvelle adresse",
+        "city": "MaVille",
+        "moveDate": "2025-06-30",
+        "zipCode": "76000"
+      },
+      "fees": "100",                                // Honoraires de courtage en €.
+      "brokerFees": 50,                             // Frais de distribution en €. Remarque: Remplir ce champ aura pour conséquence de tarifer seulement les produits qui le permettent.
+      "isBrokerFeesSpread": true                    // ** (uniquement si brokerFees est défini) Activer le lissage des frais de distributions.
+    },
+    "2": {
+      "partnerCustomerRef": "ASSUREE002",
+      "address": "test",
+      "beneficiaries": {
+        "birthCity": "Rouen",
+        "birthDate": "15/07/1996",
+        "firstname": "prénom",
+        "lastname": "nom de famille",
+        "order": 1
+      },
+      "beneficiaryClause": 1,
+      "beneficiaryType": null,
+      "city": "ROUEN",
+      "zipCode": "76000",
+      "country": "france",
+      "civility": 1,
+      "firstname": "test deux",
+      "lastname": "test",
+      "maidenName": "",
+      "birthDate": "1990-01-01",
+      "birthZipcode": "",
+      "birthCity": "",
+      "birthCountry": "FRANCE",
+      "familySituation": 2,
+      "cellPhone": "0606060607",
+      "homePhone": "",
+      "officePhone": "",
+      "email": "test.testdeux@yopmail.com",
+      "profession": 2,
+      "exactProfession": "développeur",
+      "franchise": 90,
+      "handling": false,
+      "height": false,
+      "businessTrip": false,
+      "isMainCustomer": 1,
+      "partTime": false,
+      "riskyProfession": false,
+      "riskySport": false,
+      "smoker": false,
+      "disclosedOverLemoineLimit": false,
+      "travelingAbroad": false,
+      "modulation": 4010,
+      "nextAddress": {
+        "address": "1 rue ma nouvelle adresse",
+        "city": "MaVille",
+        "moveDate": "2025-06-30",
+        "zipCode": "76000"
+      },
+      "fees": "100",
+      "brokerFees": 50,
+      "isBrokerFeesSpread": true
+    }
+  },
+  "options": {                                           // *
+    "bank": "abbey national",                         // *
+    "couple": true,                                    // Activer la tarification en tant que couple ou en tant qu’assurés isolés
+    "effectiveDate": "2025-06-01",                    // * Date d’effet permettant de définir les millésimes applicables pour la tarification.
+    "loans": {                                         // *
+      // Un bloc loan par prêt avec un index entre guillemets.
+      "1": {
+        "amount": "220000.00",                    // * Capital assuré du prêt (en euros)
+        "duration": "180",                        // * Durée du prêt (en mois)
+        "delayType": "1",                          // ** (si delay) Type de différé (1 => Partiel, 2 => Total)
+        "delay": "24",                             // Durée du différé (en mois)
+        "partnerLoanRef": 1,                       // Référence du prêt externe.
+        "rate": "0.900",                           // * Taux du prêt
+        "rateType": 1,                            // * Type de taux (1 => Fixe, 2 => Variable)
+        "type": 1,                                 // * Type de prêt (1 => Amortissable, 2 => Constant, 3 => Pallier, 4 => Relais, 5 => PTZ, 6 => In fine)
+        "waranties": {                             // *
+          // Un bloc warranty par assuré par prêt. La clé est l’identifiant de l’assuré.
+          "1": {
+            "ip": false,                       // * Garantie IP Pro (Cette garantie est encore en cours d’intégration dans le cadre de notre offre). Pour le moment, je vous suggère de forcer à « faux ».
+            "ipp": false,                     // * Garantie IPP
+            "ipt": true,                      // * Garantie IPT
+            "itp": true,                      // * Garantie ITP
+            "itt": true,                      // * Garantie ITT
+            "dos": false,                     // * Extension DOS
+            "psy": false,                     // * Extension PSY
+            "pe": false,                      // * Garantie Perte d’Emploi
+            "quotityVie": "100",              // * Quotité applicable à la partie vie (DC/PTIA)
+            "quotityNonVie": "100"            // * Quotité applicable à la partie non vie (IP, IPP, IPT, ITP, ITT, DOS, PSY, PE)
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      },
+      "2": {
+        "amount": "40000.00",
+        "duration": "200",
+        "delayType": "1",
+        "delay": "24",
+        "partnerLoanRef": 1,
+        "rate": "0.5",
+        "rateType": 1,
+        "type": 1,
+        "waranties": {
+          "1": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      },
+      "3": {
+        "amount": "20000.00",
+        "duration": "200",
+        "delayType": "1",
+        "delay": "24",
+        "partnerLoanRef": 1,
+        "rate": "0.5",
+        "rateType": 1,
+        "type": 1,
+        "waranties": {
+          "1": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          },
+          "2": {
+            "ip": false,
+            "ipp": false,
+            "ipt": true,
+            "itp": true,
+            "itt": true,
+            "dos": false,
+            "psy": false,
+            "pe": false,
+            "quotityVie": "100",
+            "quotityNonVie": "100"
+          }
+        }
+      }
+    },
+    "projectQualification": 1,                        // * Type de projet: 1 => Résidence Principale, 2 => Résidence secondaire, 3 => Investissement Locatif, 4 => Travaux, 5 => Rachat de prêt, 6 => Autre, 7 => Prêt Conso, 8 => RAC Dominante Consommation, 9 => RAC Dominante immobilière, 10 => Prêt personnel, 11 => Prêt professionnel à usage d’habitation, 12 => Crédit Bail
+    "projectState": 7                                 // * Type d’assurance: Nouveau financement => 6, Reprise bancaire => 7, Reprise autre => 8, Renégociation => 9
+  },
+  "returnResults": "true",                              // * Permet d'obtenir le retour de tarification en mode synchrone
+  "source": "HM",                                // *
+  "paymentFrequency": 12,                               // Fréquence de paiement (12x / an)
+  "products": [                                         // * Liste des produits à tarifer. Liste vide pour avoir tous les produits.
+    "xxxxx",
+    "yyyyy"
+  ]
+}

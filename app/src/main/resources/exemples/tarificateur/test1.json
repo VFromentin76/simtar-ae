@@ -1,0 +1,105 @@
+{
+    "creationDate": "2026-08-27",
+    "customers": {
+        "additionalProp1": {
+            "partnerCustomerRef": "ASSUREE001",
+            "address": "test",
+            "beneficiaries": {
+                "birthCity": "Rouen",
+                "birthDate": "15/03/1995",
+                "firstname": "prénom",
+                "lastname": "nom de famille",
+                "order": 1
+            },
+            "beneficiaryClause": 1,
+            "beneficiaryType": 1073741824,
+            "city": "ROUEN",
+            "zipCode": "76000",
+            "country": "france",
+            "civility": 1,
+            "firstname": "test un",
+            "lastname": "test",
+            "maidenName": "string",
+            "birthDate": "1995-07-15",
+            "birthZipcode": "string",
+            "birthCity": "string",
+            "birthCountry": "FRANCE",
+            "familySituation": 1,
+            "cellPhone": "0606060606",
+            "homePhone": "string",
+            "officePhone": "string",
+            "email": "test.testun@yopmail.com",
+            "profession": 5,
+            "franchise": 90,
+            "handling": false,
+            "height": false,
+            "businessTrip": false,
+            "isMainCustomer": 1,
+            "partTime": false,
+            "riskyProfession": false,
+            "riskySport": false,
+            "riskyProfessionId": 0,
+            "smoker": false,
+            "disclosedOverLemoineLimit": true,
+            "travelingAbroad": false,
+            "modulation": 4010,
+            "nextAddress": {
+                "address": "1",
+                "city": "MaVille",
+                "moveDate": "2025-06-30",
+                "zipCode": "76000"
+            },
+            "fees": "100",
+            "brokerFees": 50,
+            "isBrokerFeesSpread": true
+        }
+
+
+    },
+    "options": {
+        "bank": "abbey national",
+        "couple": false,
+        "effectiveDate": "2026-06-01",
+        "loans": {
+            "additionalProp1": {
+                "amount": "200000",
+                "duration": "100",
+                "delayType": "1",
+                "delay": "24",
+                "partnerLoanRef": 1,
+                "rate": "3.9",
+                "rateType": 1,
+                "type": 1,
+                "waranties": {
+                    "additionalProp1": {
+                        "ip": false,
+                        "ipp": true,
+                        "ipt": true,
+                        "itp": false,
+                        "itt": true,
+                        "iptSortieCapital": false,
+                        "dos": false,
+                        "psy": false,
+                        "mno": false,
+                        "mnoOption": "DOS_RACHAT_1",
+                        "ippOption": "IPP_VAR_50",
+                        "drom": false,
+                        "corse": false,
+                        "ageFinCouverture": "AGE_67",
+                        "pe": false,
+                        "quotityVie": "75",
+                        "quotityNonVie": "50",
+                        "exonerationCotisations": false
+                    }
+                }
+            }
+
+
+        },
+        "projectQualification": 1,
+        "projectState": 7
+    },
+    "returnResults": "true",
+    "source": "HM",
+    "paymentFrequency": 12
+}

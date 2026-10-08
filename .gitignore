@@ -1,0 +1,10 @@
+target/
+.idea/
+logs/
+app/logs/
+abc/
+
+# Documentation (à ne pas commiter)
+docs/
+build.log
+build-mvn-clean-install.log

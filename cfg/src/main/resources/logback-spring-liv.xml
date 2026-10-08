@@ -1,0 +1,52 @@
+<configuration debug="false">
+    <!-- Inject Spring properties -->
+    <springProperty scope="context" name="server.hostname" source="info.app.custom.hostname"/>
+    <springProperty scope="context" name="server.port" source="info.app.custom.serverPort"/>
+    <springProperty scope="context" name="server.environment" source="info.app.custom.environment"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/log/springboot/${server.environment}/${project.parent.artifactId}/${project.parent.artifactId}_${server.port}/${server.hostname}_${server.environment}_${project.parent.artifactId}_${server.port}_springboot.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/log/springboot/${server.environment}/${project.parent.artifactId}/${project.parent.artifactId}_${server.port}/${server.hostname}_${server.environment}_${project.parent.artifactId}_${server.port}_%d{yyyy-MM-dd}_springboot.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %-5level [%thread] %class \(%file:%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="fr.hm.tarificateur" level="[HM_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="fr.hm.fwk" level="[HM_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.hibernate" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.xnio" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.eclipse.jetty" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="com.jayway.jsonpath" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.jboss.logging" level="[OTHER_LOG_LEVEL]" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="ch.qos.logback" level="[OTHER_LOG_LEVEL]">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="[OTHER_LOG_LEVEL]">
+        <appender-ref ref="FILE" />
+    </root>
+
+    <jmxConfigurator />
+</configuration>

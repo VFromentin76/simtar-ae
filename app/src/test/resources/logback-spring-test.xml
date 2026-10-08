@@ -1,0 +1,54 @@
+<configuration debug="true">
+    <!-- To get colored logs in standard output -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs-test/${project.parent.artifactId}_${server.name}_${server.port}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs-test/${project.parent.artifactId}_${server.name}_${server.port}_%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] %class [%method:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%clr(%d %-5level [%thread] %class [%method:%line] - %msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="fr.hm.symphonie-conseil" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.hibernate" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.xnio" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.eclipse.jetty" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="com.jayway.jsonpath" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.jboss.logging" level="WARN" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="ch.qos.logback" level="WARN">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <jmxConfigurator />
+</configuration>

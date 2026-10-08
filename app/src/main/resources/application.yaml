@@ -1,0 +1,14 @@
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    url: /openapi.yaml
+    path: /swagger-ui.html
+    operations-sorter: method
+    default-models-expand-depth: 5
+    default-model-expand-depth: 5
+    display-request-duration: true
+
+configurator:
+  service:
+    url: ${CONFIGURATOR_SERVICE_URL:http://localhost:8081}

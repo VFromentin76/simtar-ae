@@ -1,0 +1,212 @@
+{
+    "codeProduit": "string",
+    "code": "string",
+    "libelle": "string",
+    "dateEffetDebut": "2026-08-25",
+    "dateEffetFin": "2026-08-25",
+    "statut": "BROUILLON",
+    "modeCalcul": "CI",
+    "eligibiliteLemoine": "LEMOINE_UNIQUEMENT",
+    "detailConfig": {
+        "typeContrat": "string",
+        "associationSouscriptrice": "string",
+        "territorialiteAdherent": {
+            "code": "string",
+            "libelle": "string"
+        },
+        "territorialiteBienFinance": {
+            "code": "string",
+            "libelle": "string"
+        },
+        "territorialitePrestations": {
+            "code": "string",
+            "libelle": "string"
+        },
+        "echeanceAnniversaireContrat": "string",
+        "echeanceAnniversaireAdhesion": "string",
+        "booIndexationGarantiesPrimes": true,
+        "modeFractionnement": {
+            "code": "string",
+            "libelle": "string"
+        },
+        "tauxTaxEnsembleGaranties": 0,
+        "tauxChargementFraisGestion": 0,
+        "tauxChargementFraisAcquisition": 0,
+        "tauxChargementFraisAssureur": 0,
+        "fraisAssociationEur": 0,
+        "fraisDossierEur": 0,
+        "coefficientExonerationCotisationsEnsembleGaranties": 0,
+        "seuilCoefficientPassageGrosCapital": 0,
+        "coefficientPassageGrosCapital": 0,
+        "coefficientPassageCouple": 0
+    },
+    "garanties": [
+        {
+            "garantie": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "booObligatoire": true,
+            "ageAdhesionMin": 0,
+            "ageAdhesionMax": 0,
+            "territorialite": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "montantMensuelMaxIndemnisableEur": 0,
+            "plafondCapitalMinEur": 0,
+            "plafondCapitalMaxEur": 0,
+            "dependances": [
+                {
+                    "garantieRequise": {
+                        "code": "string",
+                        "libelle": "string"
+                    }
+                }
+            ],
+            "franchises": [
+                {
+                    "franchise": {
+                        "code": "string",
+                        "libelle": "string"
+                    },
+                    "regimeLemoine": true,
+                    "coefficient": 0
+                }
+            ],
+            "options": [
+                {
+                    "option": {
+                        "code": "string",
+                        "libelle": "string"
+                    },
+                    "regimeLemoine": true,
+                    "coefficient": 0
+                }
+            ],
+            "primesPuresCi": [
+                {
+                    "ageAdhesion": 0,
+                    "dureePretAnnees": 0,
+                    "coefficient": 0
+                }
+            ],
+            "primesPuresCrd": [
+                {
+                    "ageAtteint": 0,
+                    "coefficient": 0
+                }
+            ]
+        }
+    ],
+    "typePretEligibilites": [
+        {
+            "typePret": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "regimeLemoine": true,
+            "booEligible": true
+        }
+    ],
+    "objetPretEligibilites": [
+        {
+            "objetPret": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "regimeLemoine": true,
+            "booEligible": true
+        }
+    ],
+    "typePretCoefficients": [
+        {
+            "typePret": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "branche": "VIE",
+            "regimeLemoine": true,
+            "coefficient": 0
+        }
+    ],
+    "objetPretCoefficients": [
+        {
+            "objetPret": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "regimeLemoine": true,
+            "coefficient": 0
+        }
+    ],
+    "classeRisqueCoefficients": [
+        {
+            "classeRisque": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "branche": "VIE",
+            "regimeLemoine": true,
+            "coeffPassage": 0
+        }
+    ],
+    "courbeDeformationCrd": [
+        {
+            "anciennetePretAnnees": 0,
+            "dureePretAnnees": 0,
+            "coefficient": 0
+        }
+    ],
+    "coefficientsPassageFumeurCi": [
+        {
+            "ageAdhesion": 0,
+            "branche": "VIE",
+            "coefficient": 0
+        }
+    ],
+    "coefficientsPassageFumeurCrd": [
+        {
+            "ageAtteint": 0,
+            "branche": "VIE",
+            "coefficient": 0
+        }
+    ],
+    "mappingsCategoriePro": [
+        {
+            "categorieProfessionnelle": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "classeRisque": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "criteres": [
+                {
+                    "critereProfessionnel": {
+                        "code": "string",
+                        "libelle": "string"
+                    },
+                    "valeurAttendue": true
+                }
+            ]
+        }
+    ],
+    "mappingsProfession": [
+        {
+            "profession": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "categorieProfessionnelle": {
+                "code": "string",
+                "libelle": "string"
+            },
+            "classeRisque": {
+                "code": "string",
+                "libelle": "string"
+            }
+        }
+    ]
+}

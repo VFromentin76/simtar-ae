@@ -1,0 +1,27 @@
+#EditorConfig is awesome: http://EditorConfig.org
+#Note : les clefs qui sont préfixées par ij_ ne fonctionnent que pour Intellij (https://www.jetbrains.com/help/idea/configuring-code-style.html#editorconfig)
+#top-most EditorConfig file
+root= true
+
+#Unix-style newlines with a newline ending every file
+[*]
+end_of_line= lf
+insert_final_newline= true
+max_line_length= 160
+
+[**.*]
+indent_style= space
+indent_size= 4
+
+[*.java]
+#Aligne les commentaires utilisant //
+ij_java_keep_first_column_comment= false
+
+[*.groovy]
+#Aligne les commentaires utilisant //
+ij_groovy_keep_first_column_comment= false
+
+[**/test/resources/**]
+#Désactive l'ajout d'une ligne finale dans les ressources utilisées pour les tests
+#pour éviter les problèmes lors des assert
+insert_final_newline= unset
